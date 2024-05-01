@@ -1,9 +1,15 @@
-<div *ngIf="pokemons.length">
-    <h1>Pokémons</h1>
-    <ul>
-        <li *ngFor="let pokemon of pokemons">
-            <img [src]="pokemon.imageUrl" alt="{{ pokemon.name }}">
-            <span>{{ pokemon.name }}</span>
-        </li>
-    </ul>
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <h2>Lista de Pokémon</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let pokemon of pokemons">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <span class="badge bg-primary">{{ pokemon.id }}</span>
+          {{ pokemon.name }}
+        </div>
+        <img [src]="pokemon.imageUrl" alt="{{ pokemon.name }}" width="50" height="50">
+      </div>
+    </li>
+  </ul>
 </div>

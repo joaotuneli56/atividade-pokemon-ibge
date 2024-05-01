@@ -1,24 +1,20 @@
-<p>estados-list works!</p>
-
-<div class="container-fluid">
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Sigla</th>
-                <th>Nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of estados; track $index)
-            {
-            <tr>
-                <td>{{item.id}}</td>
-                <td>{{item.sigla}}</td>
-                <td>{{item.nome}}</td>
-            </tr>
-            }
-        </tbody>
-    </table>
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <h2>Tabela de estados</h2>
+  <table class="table table-secondary">
+    <thead>
+      <tr class="table-dark">
+        <th class="text-white">ID</th>
+        <th class="text-white">Sigla</th>
+        <th class="text-white">Nome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let estado of estados">
+        <td>{{ estado.id }}</td>
+        <td>{{ estado.sigla }}</td>
+        <td>{{ estado.nome }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
