@@ -1,27 +1,33 @@
-# Myapp
+# Comando para rodar o json.db
+```
+npm install -g json-server
+```
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+# Inicie o servidor json-server, apontando para o arquivo db.json que você criou:
 
-## Development server
+```
+json-server --watch db.json
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Usando um HttpClient para inserir no db.json.
 
-## Code scaffolding
+```typescript
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@Injectable({
+  providedIn: 'root'
+})
+export class PostService {
+  private apiUrl = 'http://localhost:3000/posts';
 
-## Build
+  constructor(private http: HttpClient) {}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  getPosts(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 
-## Running unit tests
+  // Métodos para adicionar, atualizar, excluir posts, etc.
+}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
